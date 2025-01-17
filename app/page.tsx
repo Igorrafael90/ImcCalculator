@@ -1,24 +1,14 @@
 'use client'
-
-import { CalcularIMC } from "@/utils/function";
 import { useState } from "react";
+import { handleCalcular } from "@/utils/function";
 
 export default function Home() {
-  const [Idade, setIdade] = useState('')
   const [Altura, setAltura] = useState('')
   const [Peso, setPeso] = useState('')
   const [Result, setResult] = useState('')
+  const [Corpo, setCorpo] =useState('')
   const [Sexo, setSexo] = useState('')
-
-  const handleCalcular = () => {
-    try {
-      const imc = CalcularIMC({Altura: parseFloat(Altura), Peso: parseFloat(Peso)})
-      setResult(imc.toFixed(2))
-    }catch(error){
-      alert('error')
-    }
-  }
-
+  
   return (
     <>
       <main className="flex flex-col">
@@ -48,20 +38,20 @@ export default function Home() {
         </section>
         <section className="flex flex-col items-center w-full h-auto min-h-80 space-y-1">
           <h1 id="calculadora" className="text-4xl border-black border-b-2 w-72 text-center">Calculadora</h1>
-          <p>Sexo:
-            <label htmlFor="mas" form="mas"><input type="radio" value="Masculino" checked={Sexo === 'Masculino'} onChange={(e) => setSexo(e.target.value)}/>
-            Masculino</label>
-            <label htmlFor="fem" form="fem"><input type="radio" value="Feminino" checked={Sexo === 'Feminino'} onChange={(e) => setSexo(e.target.value)}/>
-            Feminino</label>
-          </p>
-          <div className="flex flex-wrap w-1/2 h-36 border-black border-4">
-            <label>Idade:<input className="w-32 border rounded-sm shadow-black shadow-sm" type="number" value={Idade} onChange={(e) => setIdade(e.target.value)}/></label>
-            <label>Altura:<input className="w-32 border rounded-sm shadow-black shadow-sm" type="number" value={Altura} onChange={(e) => setAltura(e.target.value)}/></label>
-            <label>Peso: <input className="w-32 border rounded-sm shadow-black shadow-sm" type="number" value={Peso} onChange={(e) => setPeso(e.target.value)}/></label>
-            <button className="w-24 h-10 rounded-md bg-black text-white" onClick={handleCalcular}>Calcular</button>
-            {Result &&
-            <p> Seu Imc é: {Result}</p>
-              }
+          <div className=" p-3 flex flex-col w-1/2 h-36 border-black border-4">
+            <div>
+              <p>Sexo:
+                <label htmlFor="mas" form="mas"><input type="radio" value="Masculino" checked={Sexo === 'Masculino'} onChange={(e) => setSexo(e.target.value)}/>
+                Masculino</label>
+                <label htmlFor="fem" form="fem"><input type="radio" value="Feminino" checked={Sexo === 'Feminino'} onChange={(e) => setSexo(e.target.value)}/>
+                Feminino</label>
+              </p>
+              <label>Altura: <input className="w-32 border rounded-sm shadow-black shadow-sm" type="number" value={Altura} onChange={(e) => setAltura(e.target.value)}/></label>
+              <label>Peso: <input className="w-32 border rounded-sm shadow-black shadow-sm" type="number" value={Peso} onChange={(e) => setPeso(e.target.value)}/></label>
+              <button className="ml-2 w-24 h-10 rounded-md bg-black text-white" onClick={() => handleCalcular(Altura, Peso, Sexo, setCorpo, setResult)}>Calcular</button>
+            </div>
+            <p>Seu Imc é: {Result}</p>
+            <p>Você está em: {Corpo}</p>
           </div>
         </section>
       </main>
