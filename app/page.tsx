@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <main className="flex flex-col">
-        <header className="flex items-center justify-between bg-black text-white w-full h-10 rounded-sm">
+        <header className="sticky top-0 flex items-center justify-between bg-black text-white w-full h-10 rounded-sm">
           <h1 className="text-3xl">IMC Calculator</h1>
           <ul className="flex text-white space-x-5">
             <li><a href="#o-que-é"><h2>O que é?</h2></a></li>
@@ -22,14 +22,18 @@ export default function Home() {
         </header>
         <section className="flex mt-10 w-full h-auto min-h-80">
             <div className="space-y-2 w-1/2">
-              <h1 id="o-que-é" className="text-4xl border-black border-b-2 self-start">O que é?</h1>
+              <h1 id="o-que-é" className="slideright text-4xl border-black border-b-2 self-start">O que é?</h1>
               <p className="text-xs ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ultricies auctor turpis eget congue. Phasellus odio quam, fringilla vel euismod facilisis, aliquet id mauris. Sed id quam a purus commodo viverra. Fusce fringilla elit sed lorem porttitor tristique. Sed eget elit vel massa luctus fermentum in in ipsum. Curabitur sit amet elit accumsan, ornare turpis ac, porttitor eros. Nam mollis nunc eu est pharetra dictum. Nullam bibendum in erat et auctor. In porttitor tempus magna quis dapibus. In eget lectus ac lorem imperdiet sollicitudin. Nunc commodo velit vitae metus feugiat, et interdum tortor pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce ac justo at eros ullamcorper fermentum. Donec dapibus pretium massa, vitae luctus enim. Etiam viverra ligula elit, sit amet pharetra mi pharetra iaculis.
                 Phasellus iaculis arcu sed ipsum tincidunt, sed convallis urna suscipit. Donec pretium interdum viverra. Duis odio dolor, tristique eget ullamcorper at, bibendum in leo. Quisque consectetur urna nec nunc egestas, in commodo metus elementum. Proin in mollis turpis, iaculis sodales nisi. In lacinia vehicula vulputate. Nunc sit amet ligula non justo sagittis mollis. Aliquam erat volutpat. Phasellus turpis orci, consequat vitae risus id, consectetur condimentum ex. Aliquam vitae urna libero.</p>
             </div>
-            <div></div>
+            <div className="flex w-1/2 justify-end">
+              <img className="w-64 h-64" src="./comida1.png" alt="" />
+            </div>
         </section>
         <section className="flex h-auto min-h-80 bg-black text-white w-full justify-between items-center rounded-sm">
-          <div></div>
+          <div className="flex w-1/2 justify-start">
+              <img className="w-64 h-64" src="./balança1.avif" alt="" />
+            </div>
           <div className="space-y-2 text-right w-1/2 ">
               <h1 id="para-que-serve" className="text-4xl border-white border-b-2 self-end">Para que serve?</h1>
               <p className="text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ultricies auctor turpis eget congue. Phasellus odio quam, fringilla vel euismod facilisis, aliquet id mauris. Sed id quam a purus commodo viverra. Fusce fringilla elit sed lorem porttitor tristique. Sed eget elit vel massa luctus fermentum in in ipsum. Curabitur sit amet elit accumsan, ornare turpis ac, porttitor eros. Nam mollis nunc eu est pharetra dictum. Nullam bibendum in erat et auctor. In porttitor tempus magna quis dapibus. In eget lectus ac lorem imperdiet sollicitudin. Nunc commodo velit vitae metus feugiat, et interdum tortor pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce ac justo at eros ullamcorper fermentum. Donec dapibus pretium massa, vitae luctus enim. Etiam viverra ligula elit, sit amet pharetra mi pharetra iaculis.
