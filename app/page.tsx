@@ -67,18 +67,22 @@ export default function Home() {
             <p>Você está em: {Corpo}</p>
           </div>
         </section>
-        <section>
-          <div>
-            <input value={Response} onChange={(e) => setResponse(e.target.value)} type="text"></input>
-            <button onClick={fetchFood}>Buscar</button>
+        <section className="flex flex-col h-auto min-h-80 bg-black text-white w-full justify-between items-center rounded-sm">
+          <div className="flex justify-center w-full mt-2 space-x-2">
+            <input className="rounded-sm shadow-gray-700 shadow-lg text-black" value={Response} onChange={(e) => setResponse(e.target.value)} type="text"></input>
+            <button className="text-black bg-white rounded-md p-1" onClick={fetchFood}>Buscar</button>
           </div>
-          {Food.map((Food, index) =>(
-            <li key={index}>
-              <h3>COMIDA:{Food.descricao}</h3>
-              <p>Calorias: {Food.calorias}</p>
-            </li>
-          ))
-          }
+          <div>
+            {Food.map((Food, index) =>(
+              <div>
+                <li className="text-white" key={index}>
+                  <h3>COMIDA:{Food.descricao}</h3>
+                  <p>Calorias: {Food.calorias}</p>
+                </li>
+              </div>
+            ))
+            }
+          </div>
         </section>
       </main>
     </>
