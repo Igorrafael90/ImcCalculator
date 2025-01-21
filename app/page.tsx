@@ -1,4 +1,5 @@
 'use client'
+import Food from "@/utils/interface";
 import { useState } from "react";
 import { handleCalcular } from "@/utils/function";
 
@@ -8,6 +9,14 @@ export default function Home() {
   const [Result, setResult] = useState('')
   const [Corpo, setCorpo] =useState('')
   const [Sexo, setSexo] = useState('')
+  const [Response, setResponse] = useState('')
+  const [Food, setFood] = useState<Food[]>([])
+
+  const fetchFood = () => {
+    fetch(`/api/calorias/?descricao=${Response.toLowerCase()}`)
+    .then(response => response.json())
+    .then(data => setFood(data))
+  }
   
   return (
     <>
@@ -57,6 +66,19 @@ export default function Home() {
             <p>Seu Imc é: {Result}</p>
             <p>Você está em: {Corpo}</p>
           </div>
+        </section>
+        <section>
+          <div>
+            <input value={Response} onChange={(e) => setResponse(e.target.value)} type="text"></input>
+            <button onClick={fetchFood}>Buscar</button>
+          </div>
+          {Food.map((Food, index) =>(
+            <li key={index}>
+              <h3>COMIDA:{Food.descricao}</h3>
+              <p>Calorias: {Food.calorias}</p>
+            </li>
+          ))
+          }
         </section>
       </main>
     </>
