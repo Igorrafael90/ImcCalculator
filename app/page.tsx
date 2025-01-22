@@ -13,9 +13,13 @@ export default function Home() {
   const [Food, setFood] = useState<Food[]>([])
 
   const fetchFood = () => {
-    fetch(`/api/calorias/?descricao=${Response.toLowerCase()}`)
-    .then(response => response.json())
-    .then(data => setFood(data))
+    if(!Response){
+      window.alert("Digita algum alimento")
+    }else{
+      fetch(`/api/calorias/?descricao=${Response.toLowerCase()}`)
+      .then(response => response.json())
+      .then(data => setFood(data))
+    }
   }
   
   return (
@@ -24,6 +28,7 @@ export default function Home() {
         <header className="sticky top-0 flex items-center justify-between bg-black text-white w-full h-10 rounded-sm">
           <h1 className="text-3xl">IMC Calculator</h1>
           <ul className="flex text-white space-x-5">
+          <li><a href="#alimento"><h2>Calorias</h2></a></li>
             <li><a href="#o-que-é"><h2>O que é?</h2></a></li>
             <li><a href="#para-que-serve"><h2>Para que serve?</h2></a></li>
             <li><a href="#calculadora"><h2>Calculadora</h2></a></li>
@@ -49,9 +54,9 @@ export default function Home() {
                 Phasellus iaculis arcu sed ipsum tincidunt, sed convallis urna suscipit. Donec pretium interdum viverra. Duis odio dolor, tristique eget ullamcorper at, bibendum in leo. Quisque consectetur urna nec nunc egestas, in commodo metus elementum. Proin in mollis turpis, iaculis sodales nisi. In lacinia vehicula vulputate. Nunc sit amet ligula non justo sagittis mollis. Aliquam erat volutpat. Phasellus turpis orci, consequat vitae risus id, consectetur condimentum ex. Aliquam vitae urna libero.</p>
             </div>
         </section>
-        <section className="flex flex-col items-center w-full h-auto min-h-80 space-y-1">
+        <section className="flex flex-col items-center w-full h-auto min-h-72 space-y-1">
           <h1 id="calculadora" className="text-4xl border-black border-b-2 w-72 text-center">Calculadora</h1>
-          <div className=" p-3 flex flex-col w-1/2 h-36 border-black border-4">
+          <div className=" p-3 flex flex-col w-1/2 h-auto min-h-36 border-black border-4">
             <div>
               <p>Sexo:
                 <label htmlFor="mas" form="mas"><input type="radio" value="Masculino" checked={Sexo === 'Masculino'} onChange={(e) => setSexo(e.target.value)}/>
@@ -67,22 +72,25 @@ export default function Home() {
             <p>Você está em: {Corpo}</p>
           </div>
         </section>
-        <section className="flex flex-col h-auto min-h-80 bg-black text-white w-full justify-between items-center rounded-sm">
-          <div className="flex justify-center w-full mt-2 space-x-2">
+        <section className="flex flex-col h-auto min-h-80 bg-black text-white w-full items-center rounded-sm">
+        <h1 id="alimento" className="text-4xl border-white border-b-2 w-72 text-center">Alimentos</h1>
+          <p className="text-xs">* Aqui mostrara a calorias por unidade do alimento pesquisado *</p>
+          <div className="mt-1 flex justify-center w-full space-x-2">
             <input className="rounded-sm shadow-gray-700 shadow-lg text-black" value={Response} onChange={(e) => setResponse(e.target.value)} type="text"></input>
             <button className="text-black bg-white rounded-md p-1" onClick={fetchFood}>Buscar</button>
           </div>
-          <div>
-            {Food.map((Food, index) =>(
-              <div>
-                <li className="text-white" key={index}>
-                  <h3>COMIDA:{Food.descricao}</h3>
-                  <p>Calorias: {Food.calorias}</p>
-                </li>
-              </div>
-            ))
-            }
-          </div>
+            <div className="grid grid-cols-2">
+              {Food.map((Food) =>(
+                <div key={`${Food.descricao}-${Food.calorias}-${Food.quantidade}`}  className="p-2 w-80 h-24 bg-white rounded-md my-2 mx-2 shadow-md shadow-gray-600">
+                  <li className="text-black list-none">
+                    <p><strong>Comida:</strong><i> {Food.descricao}</i></p>
+                    <p><strong>Calorias:</strong><i> {Food.calorias}</i></p>
+                    <p><strong>Quantidade:</strong><i> {Food.quantidade}</i></p>
+                  </li>
+                </div>
+              ))
+              }
+            </div>
         </section>
       </main>
     </>
