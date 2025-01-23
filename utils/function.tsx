@@ -28,9 +28,6 @@ export const handleCalcular = (
           setCorpo('Obesidade Grau ||')
         }else if(imc > 39.9){
           setCorpo('Obesidade Grau |||')
-        }else{
-          setCorpo('')
-          setResult('')
         }
       }else{
         if(imc <= 18.5){
@@ -45,9 +42,6 @@ export const handleCalcular = (
           setCorpo('Obesidade Grau ||')
         }else if(imc > 39.9){
           setCorpo('Obesidade Grau |||')
-        }else{
-          setCorpo('')
-          setResult('')
         }
       }
     }
