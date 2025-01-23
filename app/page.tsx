@@ -11,6 +11,7 @@ export default function Home() {
   const [Sexo, setSexo] = useState('')
   const [Response, setResponse] = useState('')
   const [Food, setFood] = useState<Food[]>([])
+  const [Loading, setLoading] = useState(true)
 
   const fetchFood = () => {
     if(!Response){
@@ -19,6 +20,7 @@ export default function Home() {
       fetch(`/api/calorias/?descricao=${Response.toLowerCase()}`)
       .then(response => response.json())
       .then(data => setFood(data))
+      setLoading(false)
     }
   }
   
@@ -35,18 +37,18 @@ export default function Home() {
           </ul>
         </header>
         <section className="flex mt-10 w-full h-auto min-h-80">
-            <div className="space-y-2 w-1/2">
-              <h1 id="o-que-é" className="slideright text-4xl border-black border-b-2 self-start">O que é?</h1>
+            <div className="space-y-2 w-1/2 text-left">
+              <h1 id="o-que-é" className="text-4xl border-black border-b-2 self-start">O que é?</h1>
               <p className="text-xs ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ultricies auctor turpis eget congue. Phasellus odio quam, fringilla vel euismod facilisis, aliquet id mauris. Sed id quam a purus commodo viverra. Fusce fringilla elit sed lorem porttitor tristique. Sed eget elit vel massa luctus fermentum in in ipsum. Curabitur sit amet elit accumsan, ornare turpis ac, porttitor eros. Nam mollis nunc eu est pharetra dictum. Nullam bibendum in erat et auctor. In porttitor tempus magna quis dapibus. In eget lectus ac lorem imperdiet sollicitudin. Nunc commodo velit vitae metus feugiat, et interdum tortor pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce ac justo at eros ullamcorper fermentum. Donec dapibus pretium massa, vitae luctus enim. Etiam viverra ligula elit, sit amet pharetra mi pharetra iaculis.
                 Phasellus iaculis arcu sed ipsum tincidunt, sed convallis urna suscipit. Donec pretium interdum viverra. Duis odio dolor, tristique eget ullamcorper at, bibendum in leo. Quisque consectetur urna nec nunc egestas, in commodo metus elementum. Proin in mollis turpis, iaculis sodales nisi. In lacinia vehicula vulputate. Nunc sit amet ligula non justo sagittis mollis. Aliquam erat volutpat. Phasellus turpis orci, consequat vitae risus id, consectetur condimentum ex. Aliquam vitae urna libero.</p>
             </div>
-            <div className="flex w-1/2 justify-end">
-              <img className="w-64 h-64" src="./comida1.png" alt="" />
+            <div className="flex w-1/2 justify-center items-start">
+              <img className="w-64" src="./cerebro.gif" alt="" />
             </div>
         </section>
         <section className="flex h-auto min-h-80 bg-black text-white w-full justify-between items-center rounded-sm">
-          <div className="flex w-1/2 justify-start">
-              <img className="w-64 h-64" src="./balança1.avif" alt="" />
+          <div className="flex w-1/2 justify-center items-start">
+              <img className="w-64" src="./cerebro2.gif" alt="" />
             </div>
           <div className="space-y-2 text-right w-1/2 ">
               <h1 id="para-que-serve" className="text-4xl border-white border-b-2 self-end">Para que serve?</h1>
@@ -55,7 +57,7 @@ export default function Home() {
             </div>
         </section>
         <section className="flex flex-col items-center w-full h-auto min-h-72 space-y-1">
-          <h1 id="calculadora" className="text-4xl border-black border-b-2 w-72 text-center">Calculadora</h1>
+          <h1 id="calculadora" className="slideright text-4xl border-black border-b-2 w-72 text-center">Calculadora</h1>
           <div className=" p-3 flex flex-col w-1/2 h-auto min-h-36 border-black border-4">
             <div>
               <p>Sexo:
@@ -79,7 +81,12 @@ export default function Home() {
             <input className="rounded-sm shadow-gray-700 shadow-lg text-black" value={Response} onChange={(e) => setResponse(e.target.value)} type="text"></input>
             <button className="text-black bg-white rounded-md p-1" onClick={fetchFood}>Buscar</button>
           </div>
-            <div className="grid grid-cols-2">
+            {Loading ? (
+              <div>
+                <img className="mt-2 w-24" src="/animate2.gif" alt="" />
+              </div>
+            ) : (
+              <div className="grid grid-cols-2">
               {Food.map((Food) =>(
                 <div key={`${Food.descricao}-${Food.calorias}-${Food.quantidade}`}  className="p-2 w-80 h-24 bg-white rounded-md my-2 mx-2 shadow-md shadow-gray-600">
                   <li className="text-black list-none">
@@ -91,6 +98,7 @@ export default function Home() {
               ))
               }
             </div>
+            )}
         </section>
       </main>
     </>
