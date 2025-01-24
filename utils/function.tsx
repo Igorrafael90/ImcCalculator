@@ -1,3 +1,5 @@
+import Food from "./interface";
+
 export const handleCalcular = (
     Altura: string,
     Peso: string,
@@ -43,5 +45,27 @@ export const handleCalcular = (
         }else if(imc > 39.9){
           setCorpo('Obesidade Grau |||')
         }
+      }
+    }
+
+export const fetchFood = (
+  Response:string,
+  setFood: React.Dispatch<React.SetStateAction<Food[]>>,
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>,
+) => {
+      if (!Response) {
+        window.alert("Digita algum alimento")
+      } else {
+        fetch(`/api/calorias/?descricao=${Response.toLowerCase()}`)
+          .then((response) => response.json())
+          .then((data) => {
+            // Adiciona um ID único baseado no índice por conta que a API não possui id unico para cada alimento
+            const dataWithIds = data.map((item: Food, index: number) => ({
+              ...item,//Faz o spreed operator para destrinchar e adicionar o id com a combinação
+              id: `${item.descricao}-${index}`, // Combina a descrição com o índice
+            }));
+            setFood(dataWithIds);
+          });
+        setLoading(false);
       }
     }

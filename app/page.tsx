@@ -1,7 +1,7 @@
 'use client'
 import Food from "@/utils/interface";
 import { useState } from "react";
-import { handleCalcular } from "@/utils/function";
+import { fetchFood, handleCalcular } from "@/utils/function";
 
 export default function Home() {
   const [Altura, setAltura] = useState('')
@@ -12,24 +12,6 @@ export default function Home() {
   const [Response, setResponse] = useState('')
   const [Food, setFood] = useState<Food[]>([])
   const [Loading, setLoading] = useState(true)
-
-  const fetchFood = () => {
-    if (!Response) {
-      window.alert("Digita algum alimento")
-    } else {
-      fetch(`/api/calorias/?descricao=${Response.toLowerCase()}`)
-        .then((response) => response.json())
-        .then((data) => {
-          // Adiciona um ID único baseado no índice por conta que a API não possui id unico para cada alimento
-          const dataWithIds = data.map((item: Food, index: number) => ({
-            ...item,//Faz o spreed operator para destrinchar e adicionar o id com a combinação
-            id: `${item.descricao}-${index}`, // Combina a descrição com o índice
-          }));
-          setFood(dataWithIds);
-        });
-      setLoading(false);
-    }
-  }
 
   return (
     <>
@@ -88,7 +70,7 @@ export default function Home() {
           <p className="text-xs">* Aqui mostrara a calorias por unidade do alimento pesquisado *</p>
           <div className="mt-1 flex justify-center w-full space-x-2">
             <input className="rounded-sm shadow-gray-700 shadow-lg text-black" value={Response} onChange={(e) => setResponse(e.target.value)} type="text"></input>
-            <button className="text-black bg-white rounded-md p-1" onClick={fetchFood}>Buscar</button>
+            <button className="text-black bg-white rounded-md p-1" onClick={() => fetchFood(Response, setFood, setLoading)}>Buscar</button>
           </div>
           {Loading ? (
             <div>
