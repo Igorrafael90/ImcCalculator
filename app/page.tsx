@@ -25,7 +25,7 @@ export default function Home() {
             <li><a href="#calculadora"><h2>Calculadora</h2></a></li>
           </ul>
         </header>
-        <section className="flex mt-10 w-full h-auto min-h-80">
+        <section className="Fade flex mt-5 w-full h-auto min-h-80">
           <div className="space-y-2 w-1/2 text-left">
             <h1 id="o-que-é" className="text-4xl border-black border-b-2 self-start">O que é?</h1>
             <p className="font-light">O Índice de Massa Corporal (IMC) é uma medida internacionalmente reconhecida que avalia a relação entre o peso e a altura de uma pessoa. Ele é amplamente utilizado como um indicador simples para identificar possíveis desvios no peso corporal que podem afetar a saúde, como baixo peso, sobrepeso ou obesidade. O IMC não mede diretamente a gordura corporal, mas serve como um parâmetro inicial para determinar a saúde nutricional e o risco de doenças associadas ao peso. O IMC é uma ferramenta simples e eficaz para avaliar o peso corporal em relação à altura. No entanto, ele deve ser usado como um ponto de partida para investigações mais detalhadas sobre a saúde de uma pessoa, complementado por outros exames e avaliações clínicas.</p>
@@ -34,7 +34,7 @@ export default function Home() {
             <img className="w-64" src="./cerebro.gif" alt="" />
           </div>
         </section>
-        <section className="flex h-auto min-h-80 bg-black text-white w-full justify-between items-center rounded-sm">
+        <section className="Fade flex h-auto min-h-80 bg-black text-white w-full justify-between items-center rounded-sm">
           <div className="flex w-1/2 justify-center items-start">
             <img className="w-64" src="./cerebro2.gif" alt="" />
           </div>
@@ -47,7 +47,7 @@ export default function Home() {
             </p>
           </div>
         </section>
-        <section className="flex flex-col items-center w-full h-auto min-h-72 space-y-1">
+        <section className="Fade flex flex-col items-center w-full h-auto min-h-72 space-y-1">
           <h1 id="calculadora" className="slideright text-4xl border-black border-b-2 w-72 text-center">Calculadora</h1>
           <div className=" p-3 flex flex-col w-1/2 h-auto min-h-36 border-black border-4">
             <div>
@@ -59,18 +59,18 @@ export default function Home() {
               </p>
               <label>Altura: <input className="w-32 border rounded-sm shadow-black shadow-sm" type="number" value={Altura} onChange={(e) => setAltura(e.target.value)} /></label>
               <label>Peso: <input className="w-32 border rounded-sm shadow-black shadow-sm" type="number" value={Peso} onChange={(e) => setPeso(e.target.value)} /></label>
-              <button className="ml-2 w-24 h-10 rounded-md bg-black text-white" onClick={() => handleCalcular(Altura, Peso, Sexo, setCorpo, setResult)}>Calcular</button>
+              <button className="ml-2 w-24 h-10 rounded-md bg-black text-white hover:bg-gray-900" onClick={() => handleCalcular(Altura, Peso, Sexo, setCorpo, setResult)}>Calcular</button>
             </div>
             <p>Seu Imc é: {Result}</p>
             <p>Você está em: {Corpo}</p>
           </div>
         </section>
-        <section className="flex flex-col h-auto min-h-80 bg-black text-white w-full items-center rounded-sm">
+        <section className="Fade flex flex-col h-auto min-h-80 bg-black text-white w-full items-center rounded-sm">
           <h1 id="alimento" className="text-4xl border-white border-b-2 w-72 text-center">Alimentos</h1>
           <p className="text-xs">* Aqui mostrara a calorias por unidade do alimento pesquisado *</p>
           <div className="mt-1 flex justify-center w-full space-x-2">
             <input className="rounded-sm shadow-gray-700 shadow-lg text-black" value={Response} onChange={(e) => setResponse(e.target.value)} type="text"></input>
-            <button className="text-black bg-white rounded-md p-1" onClick={() => fetchFood(Response, setFood, setLoading)}>Buscar</button>
+            <button className="text-black bg-white rounded-md p-1 hover:bg-gray-200" onClick={() => fetchFood(Response, setFood, setLoading)}>Buscar</button>
           </div>
           {Loading ? (
             <div>
