@@ -16,13 +16,13 @@ export default function Home() {
   return (
     <>
       <main className="flex flex-col">
-        <header className="sticky top-0 flex items-center justify-between bg-black text-white w-full h-10 rounded-sm">
+        <header className="z-10 sticky top-0 flex items-center justify-between bg-black text-white w-full h-10 rounded-sm">
           <h1 className="text-3xl">IMC Calculator</h1>
           <ul className="flex text-white space-x-5">
-            <li><a href="#alimento"><h2>Calorias</h2></a></li>
-            <li><a href="#o-que-é"><h2>O que é?</h2></a></li>
-            <li><a href="#para-que-serve"><h2>Para que serve?</h2></a></li>
-            <li><a href="#calculadora"><h2>Calculadora</h2></a></li>
+            <li><a href="#alimento"><h2 className="uppercase">Calorias</h2></a></li>
+            <li><a href="#o-que-é"><h2 className="uppercase">O que é?</h2></a></li>
+            <li><a href="#para-que-serve"><h2 className="uppercase">Para que serve?</h2></a></li>
+            <li><a href="#calculadora"><h2 className="uppercase">Calculadora</h2></a></li>
           </ul>
         </header>
         <section className="Fade flex mt-5 w-full h-auto min-h-80">
@@ -79,7 +79,7 @@ export default function Home() {
           ) : (
             <div className="grid grid-cols-2">
               {Food.map((Food) => (
-                <div key={Food.id} className="p-2 w-80 h-28 bg-white rounded-md my-2 mx-2 shadow-md shadow-gray-600">
+                <div key={Food.id} className="p-2 w-80 hover:scale-105 transition-all duration-300 h-28 bg-white rounded-md my-2 mx-2 shadow-md shadow-gray-600">
                   <li className="text-black list-none">
                     <p><strong>Comida:</strong><i> {Food.descricao}</i></p>
                     <p><strong>Calorias:</strong><i> {Food.calorias}</i></p>
