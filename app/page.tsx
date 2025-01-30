@@ -1,17 +1,20 @@
 'use client'
 import Food from "@/utils/interface";
 import { useState } from "react";
-import { fetchFood, handleCalcular } from "@/utils/function";
+import Imcconst, { fetchFood, handleCalcular } from "@/utils/function";
 
 export default function Home() {
-  const [Altura, setAltura] = useState('')
-  const [Peso, setPeso] = useState('')
-  const [Result, setResult] = useState('')
-  const [Corpo, setCorpo] = useState('')
-  const [Sexo, setSexo] = useState('')
-  const [Response, setResponse] = useState('')
-  const [Food, setFood] = useState<Food[]>([])
-  const [Loading, setLoading] = useState(true)
+  const{Altura,setAltura,
+        Peso,setPeso,
+        Result,setResult,
+        Corpo,setCorpo,
+        Sexo,setSexo,
+        Response,setResponse,
+        Food,setFood,
+        Loading,setLoading,
+        fetchFood,
+        handleCalcular,
+  } = Imcconst()
 
   return (
     <>

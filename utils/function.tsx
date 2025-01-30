@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Food from "./interface";
 
 export const handleCalcular = (
@@ -69,3 +70,35 @@ export const fetchFood = (
         setLoading(false);
       }
     }
+
+export default function Imcconst(){
+    const [Altura, setAltura] = useState('')
+    const [Peso, setPeso] = useState('')
+    const [Result, setResult] = useState('')
+    const [Corpo, setCorpo] = useState('')
+    const [Sexo, setSexo] = useState('')
+    const [Response, setResponse] = useState('')
+    const [Food, setFood] = useState<Food[]>([])
+    const [Loading, setLoading] = useState(true)
+
+    return{
+        Altura,
+        setAltura,
+        Peso,
+        setPeso,
+        Result,
+        setResult,
+        Corpo,
+        setCorpo,
+        Sexo,
+        setSexo,
+        Response,
+        setResponse,
+        Food,
+        setFood,
+        Loading,
+        setLoading,
+        fetchFood,
+        handleCalcular,
+    }
+  }
