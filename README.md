@@ -4,9 +4,9 @@ Este projeto é um site que ajuda os usuários a entenderem o **Índice de Massa
 
 ## ✨ Funcionalidades
 
-- Explicação sobre **o que é o IMC** e sua importância.
-- Cálculo do **IMC** com base no peso e altura inseridos pelo usuário.
-- **Barra de pesquisa** para buscar alimentos e visualizar as calorias por unidade.
+- 📖Explicação sobre **o que é o IMC** e sua importância.
+- 🧮Cálculo do **IMC** com base no peso e altura inseridos pelo usuário.
+- 🔎**Barra de pesquisa** para buscar alimentos e visualizar as calorias por unidade.
 
 ## 🚀 Ferramentas Usadas
 
